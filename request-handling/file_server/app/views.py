@@ -12,7 +12,7 @@ def file_list(request, date=None):
         for file in files:
             path = os.path.join(FILES_PATH, file)
             ctime = datetime.fromtimestamp(os.path.getctime(path))
-            mtime = datetime.fromtimestamp(os.path.getctime(path))
+            mtime = datetime.fromtimestamp(os.path.getmtime(path))
             if date == ctime.date() or date == mtime.date():
                 ls_files.append({'name': file,
                                  'ctime': ctime,

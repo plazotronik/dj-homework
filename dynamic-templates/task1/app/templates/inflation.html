@@ -18,7 +18,38 @@
         <h1 class="col s12">Инфляция в России</h1>
         <div class="col s12 m8">
         
-        <!-- Ваша логика -->
+          <table>
+            <colgroup>
+              <col span="13">
+              <col style="background: #818181;">
+            </colgroup>
+            <tr>
+              {% for head in header %}
+                <th> {{ head }} </th>
+              {% endfor %}
+            </tr>
+              {% for row in data_ %}
+                <tr>
+                  {% for cell in row %}
+                    {% if cell < 0 %}
+                      <td bgcolor="#1d8100"> {{ cell }} </td>
+                    {% elif 0 <= cell and cell < 1 %}
+                      <td> {{ cell }} </td>
+                    {% elif 1 <= cell and cell  < 2 %}
+                      <td bgcolor="#f9d5d4"> {{ cell }} </td>
+                    {% elif 2 <= cell and cell  < 5 %}
+                      <td bgcolor="#f3928b"> {{ cell }} </td>
+                    {% elif 5 <= cell  %}
+                      <td bgcolor="#f62f00"> {{ cell }} </td>
+                    {% elif cell %}
+                      <td> {{ cell }} </td>
+                    {% else %}
+                      <td> {{ cell }} </td>
+                    {% endif %}
+                  {% endfor %}
+                </tr>
+              {% endfor %}
+          </table>
 
         </div>
       </div>
